@@ -1,0 +1,32 @@
+* {
+  font-family: palatino;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.controls {
+  width: 25%;
+}
+
+.results {
+
+}
+
+label {
+  font-size: 0.8em;
+  display: block;
+}
+
+select {
+  width: 100%;
+}
+
+.mushroomAttribute {
+  margin-top: 6px;
+}
+
+li {
+  font-family: monospace;
+}
