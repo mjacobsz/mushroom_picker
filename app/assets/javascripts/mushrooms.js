@@ -47,12 +47,19 @@ class MushroomManager {
 
   constructListOfMushrooms(returnList, mushroomData) {
     returnList.innerHTML = "";
-
-    for (let index in mushroomData) {
-      let newLI = document.createElement("li");
-      newLI.appendChild(document.createTextNode(mushroomData[index]));
-      returnList.appendChild(newLI);
+    if (mushroomData.length){
+      for (let index in mushroomData) {
+        this.addLiToList(returnList, mushroomData[index]);
+      }
+    } else {
+      this.addLiToList(returnList, "No mushrooms match the criteria");
     }
+  }
+
+  addLiToList(returnList, textValue) {
+    let newLi = document.createElement("li");
+    newLi.appendChild(document.createTextNode(textValue));
+    returnList.appendChild(newLi);
   }
 }
 
