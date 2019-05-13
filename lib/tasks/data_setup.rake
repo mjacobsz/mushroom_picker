@@ -15,4 +15,21 @@ namespace :data_setup do
       end
     end
   end
+
+  desc "Insert mushrooms in the database based on the 'agaricus-lepiota.data' file"
+  task :create_mushrooms do
+    File.open("#{Rails.root}/config/agaricus-lepiota.data", "r") do |f|
+      while line = f.gets do
+        puts "Creating: #{line}"
+        mushroom_values = line.strip.split(",")
+        mushroom = Mushroom.new
+        mushroom_values.each_with_index do |mushroom_value, index|
+          attribute = MushroomAttributes.keys[index]
+          value = MushroomAttributes[attribute][mushroom_value]
+          mushroom.send("#{attribute}" + "=", value)
+        end
+        mushroom.save!
+      end
+    end
+  end
 end
