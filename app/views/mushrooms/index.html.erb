@@ -1,0 +1,22 @@
+<h1>Mushrooms</h1>
+
+<div class="wrapper">
+  <div class="controls">
+    <button id="resetButton">Reset</button>
+
+    <%= form_with model: @mushroom do |form| %>
+      <% MushroomAttributes.keys.each do |mushroom_attribute| %>
+        <div class="mushroomAttribute">
+          <%= form.label mushroom_attribute %>
+          <%= form.select mushroom_attribute.to_sym, MushroomAttributes[mushroom_attribute].values.unshift(""), {}, {class: "mushroom-attr-selector"} %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div id="results">
+    <ul id="resultslist">
+
+    </ul>
+  </div>
+</div>
