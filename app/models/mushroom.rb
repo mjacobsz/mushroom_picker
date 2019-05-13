@@ -9,4 +9,9 @@ class Mushroom < ApplicationRecord
       mushroom_collection.where(column_value_hash)
     end
   end
+
+  def to_s
+    attrs = self.attributes.reject { |k,v| k == "id" }
+    attrs.map { |k, v| MushroomAttributes[k].key(v) }.join(",")
+  end
 end
